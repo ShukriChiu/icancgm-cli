@@ -6,11 +6,11 @@
   ],
   "scripts": {
     "build:rust": "cargo build -p sino-cli",
-    "build:ts": "npm run build -w @sinocare/icancgm-cli",
+    "build:ts": "npm run build -w @shukrichiu/icancgm-cli",
     "build": "npm run build:rust && npm run build:ts",
-    "type-check": "npm run type-check -w @sinocare/icancgm-cli",
+    "type-check": "npm run type-check -w @shukrichiu/icancgm-cli",
     "version:set": "node scripts/set-version.mjs",
     "release:check": "node scripts/check-release-ready.mjs",
-    "release:pack": "npm pack --workspace @sinocare/icancgm-cli"
+    "release:pack": "npm pack --workspace @shukrichiu/icancgm-cli"
   }
 }

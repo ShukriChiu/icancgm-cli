@@ -32,9 +32,9 @@ jobs:
         run: npm run release:check -- ${{ github.event.release.tag_name || github.ref_name }}
 
       - name: Build npm wrapper
-        run: npm run build -w @sinocare/icancgm-cli
+        run: npm run build -w @shukrichiu/icancgm-cli
 
       - name: Publish npm package
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish --workspace @sinocare/icancgm-cli --access public --provenance
+        run: npm publish --workspace @shukrichiu/icancgm-cli --access public --provenance

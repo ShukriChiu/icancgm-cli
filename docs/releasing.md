@@ -12,7 +12,7 @@ The release flow is:
 2. Run the release readiness check.
 3. Create and push a Git tag that matches the npm package version, for example `v0.1.0`.
 4. Let GitHub Actions create or update the GitHub Release and upload the binaries.
-5. Let the npm publish workflow publish `@sinocare/icancgm-cli`.
+5. Let the npm publish workflow publish `@shukrichiu/icancgm-cli`.
 
 The wrapper then downloads:
 
@@ -33,7 +33,7 @@ https://github.com/shukrichiu/icancgm-cli/releases/download/<tag>/<asset>
 You can override this during install with:
 
 ```bash
-SINO_RELEASE_REPO=owner/repo npm install -g @sinocare/icancgm-cli
+SINO_RELEASE_REPO=owner/repo npm install -g @shukrichiu/icancgm-cli
 ```
 
 ## Build Rust Release Binaries
@@ -124,7 +124,7 @@ The workflow will:
 - check out the tagged commit
 - run `npm run release:check`
 - build the wrapper package
-- run `npm publish --workspace @sinocare/icancgm-cli --access public --provenance`
+- run `npm publish --workspace @shukrichiu/icancgm-cli --access public --provenance`
 
 ## Manual npm Publish Fallback
 
@@ -132,13 +132,13 @@ If you need to publish manually, build the TypeScript wrapper first:
 
 ```bash
 npm install
-npm run build -w @sinocare/icancgm-cli
+npm run build -w @shukrichiu/icancgm-cli
 ```
 
 Then publish from the workspace package:
 
 ```bash
-npm publish --workspace @sinocare/icancgm-cli --access public
+npm publish --workspace @shukrichiu/icancgm-cli --access public
 ```
 
 If you want to test the package tarball locally first:
@@ -152,7 +152,7 @@ npm run release:pack
 After publishing:
 
 ```bash
-npm install -g @sinocare/icancgm-cli
+npm install -g @shukrichiu/icancgm-cli
 ```
 
 The package will automatically:
@@ -189,13 +189,13 @@ SINO_SKIP_DOWNLOAD=1 npm install
 ### Use a different release repo
 
 ```bash
-SINO_RELEASE_REPO=my-org/icancgm-cli npm install -g @sinocare/icancgm-cli
+SINO_RELEASE_REPO=my-org/icancgm-cli npm install -g @shukrichiu/icancgm-cli
 ```
 
 ### Use a different release tag
 
 ```bash
-SINO_RELEASE_VERSION=v0.1.0-beta.1 npm install -g @sinocare/icancgm-cli
+SINO_RELEASE_VERSION=v0.1.0-beta.1 npm install -g @shukrichiu/icancgm-cli
 ```
 
 ### Use a custom base release URL
@@ -203,5 +203,5 @@ SINO_RELEASE_VERSION=v0.1.0-beta.1 npm install -g @sinocare/icancgm-cli
 This is useful if you later move binaries to an object store.
 
 ```bash
-SINO_RELEASE_BASE_URL=https://downloads.example.com/icancgm-cli npm install -g @sinocare/icancgm-cli
+SINO_RELEASE_BASE_URL=https://downloads.example.com/icancgm-cli npm install -g @shukrichiu/icancgm-cli
 ```

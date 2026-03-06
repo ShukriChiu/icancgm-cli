@@ -1,5 +1,5 @@
 {
-  "name": "@sinocare/icancgm-cli",
+  "name": "@shukrichiu/icancgm-cli",
   "version": "0.1.0",
   "description": "CLI wrapper for querying SINO CGM production data through the icancgm Rust binary.",
   "license": "UNLICENSED",

@@ -1,11 +1,11 @@
-# @sinocare/icancgm-cli
+# @shukrichiu/icancgm-cli
 
-`@sinocare/icancgm-cli` installs the `sino` command and downloads the matching Rust binary from GitHub Releases during `postinstall`.
+`@shukrichiu/icancgm-cli` installs the `sino` command and downloads the matching Rust binary from GitHub Releases during `postinstall`.
 
 ## Install
 
 ```bash
-npm install -g @sinocare/icancgm-cli
+npm install -g @shukrichiu/icancgm-cli
 ```
 
 The binary is downloaded from:
