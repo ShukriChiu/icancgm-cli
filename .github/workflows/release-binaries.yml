@@ -1,4 +1,4 @@
-name: Release Binaries
+name: Release
 
 on:
   push:
@@ -102,3 +102,35 @@ jobs:
         with:
           files: release-assets/*
           generate_release_notes: true
+
+  publish-npm:
+    name: Publish npm Package
+    needs: release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Verify release readiness
+        run: npm run release:check -- ${{ github.ref_name }}
+
+      - name: Build npm wrapper
+        run: npm run build -w @shukrichiu/icancgm-cli
+
+      - name: Publish npm package
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --workspace @shukrichiu/icancgm-cli --access public --provenance

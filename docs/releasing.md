@@ -4,15 +4,17 @@
 
 The npm package downloads a platform-specific Rust binary from GitHub Releases during `postinstall`.
 
-When you push a tag like `v0.1.0`, `.github/workflows/release-binaries.yml` automatically builds and uploads the 5 expected platform binaries to a GitHub Release.
+When you push a tag like `v0.1.0`, `.github/workflows/release-binaries.yml` automatically builds binaries, creates a GitHub Release, and publishes the npm package — all in one workflow.
 
 The release flow is:
 
 1. Set the new version in both Rust and npm metadata.
 2. Run the release readiness check.
 3. Create and push a Git tag that matches the npm package version, for example `v0.1.0`.
-4. Let GitHub Actions create or update the GitHub Release and upload the binaries.
-5. Let the npm publish workflow publish `@shukrichiu/icancgm-cli`.
+4. GitHub Actions automatically runs three jobs in sequence:
+   - **build** — compiles 5 platform binaries in parallel
+   - **release** — creates the GitHub Release and uploads binaries
+   - **publish-npm** — publishes `@shukrichiu/icancgm-cli` to npm
 
 The wrapper then downloads:
 
@@ -111,7 +113,8 @@ Use the manual `gh release create` flow only as a fallback if the workflow is un
 
 ## Publish The npm Package
 
-`publish-npm.yml` publishes the npm package automatically after the release is published.
+The npm publish step runs automatically as the final job in `release-binaries.yml`,
+after the GitHub Release is created. No separate workflow trigger is needed.
 
 Before this works, configure the repository secret:
 
@@ -119,7 +122,7 @@ Before this works, configure the repository secret:
 NPM_TOKEN
 ```
 
-The workflow will:
+The `publish-npm` job will:
 
 - check out the tagged commit
 - run `npm run release:check`
