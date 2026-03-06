@@ -68,6 +68,8 @@ cargo build --release -p sino-cli --target aarch64-unknown-linux-gnu
 cp target/aarch64-unknown-linux-gnu/release/sino ./sino-linux-arm64
 ```
 
+GitHub Actions builds this target with `cargo-zigbuild` and a pinned Zig version (`0.13.0`) to avoid the flaky `latest` resolution path.
+
 ### Windows x64
 
 ```bash
