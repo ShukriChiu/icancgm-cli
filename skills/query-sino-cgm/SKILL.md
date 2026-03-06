@@ -10,14 +10,22 @@ description: Query SINO CGM production data through the `sino` CLI by `user_id`.
 Use the `sino` CLI to query the production SCRM MCP API at `https://ican.sinocare.com/api/scrm-mcp`.
 Treat `user_id` as the required identifier in the current version. Prefer JSON output so downstream agents can reason over the results safely.
 
+## Setup
+
+1. Check whether `sino` is already available with `command -v sino`.
+2. If `sino` is missing, install the CLI with `npm install -g @shukrichiu/icancgm-cli`.
+3. After installation, verify the CLI with `sino health --json` before querying user data.
+4. If installation fails, report the install error directly and stop instead of guessing.
+
 ## Workflow
 
-1. Confirm the `user_id`.
-2. Choose the narrowest command that answers the request.
-3. Prefer `--pretty` for human-facing summaries and `--json` for machine processing.
-4. If the user asks for a date range, use `cgm range`.
-5. If the user asks for a single day with all related signals, use `daily`.
-6. If the user asks for a specific event, use `event get`.
+1. Ensure the `sino` CLI is installed and healthy.
+2. Confirm the `user_id`.
+3. Choose the narrowest command that answers the request.
+4. Prefer `--pretty` for human-facing summaries and `--json` for machine processing.
+5. If the user asks for a date range, use `cgm range`.
+6. If the user asks for a single day with all related signals, use `daily`.
+7. If the user asks for a specific event, use `event get`.
 
 ## Command Map
 
@@ -43,6 +51,8 @@ Treat `user_id` as the required identifier in the current version. Prefer JSON o
 
 ## Failure Handling
 
+- If `sino` is not installed, install it with `npm install -g @shukrichiu/icancgm-cli` and rerun the command.
+- If CLI installation or the health check fails, surface the exact error and stop.
 - If the CLI returns a 400-style parameter error, check date format first.
 - If the CLI returns a 500-style query error, report the backend error text without guessing a fix.
 - If the response is empty, state that no data was returned for the requested `user_id` and time window.

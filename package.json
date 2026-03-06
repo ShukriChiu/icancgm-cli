@@ -12,5 +12,8 @@
     "version:set": "node scripts/set-version.mjs",
     "release:check": "node scripts/check-release-ready.mjs",
     "release:pack": "npm pack --workspace @shukrichiu/icancgm-cli"
+  },
+  "dependencies": {
+    "@shukrichiu/icancgm-cli": "^0.1.0"
   }
 }

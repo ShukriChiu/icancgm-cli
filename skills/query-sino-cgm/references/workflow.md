@@ -6,6 +6,20 @@
 - Current version uses `user_id` for every data command.
 - Future token-based flows are intentionally out of scope for this version.
 
+## Setup And Verification
+
+### Install the CLI when missing
+
+```bash
+command -v sino >/dev/null 2>&1 || npm install -g @shukrichiu/icancgm-cli
+```
+
+### Verify the CLI before data queries
+
+```bash
+sino health --json
+```
+
 ## Recommended Commands
 
 ### User profile
