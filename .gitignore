@@ -1,0 +1,7 @@
+/target
+/node_modules
+/dist
+/.DS_Store
+/.idea
+/.vscode
+packages/sino-cli/dist

@@ -1,0 +1,15 @@
+[package]
+name = "sino-cli"
+version.workspace = true
+edition.workspace = true
+
+[[bin]]
+name = "sino"
+path = "src/main.rs"
+
+[dependencies]
+anyhow.workspace = true
+clap.workspace = true
+serde_json.workspace = true
+sino-core = { path = "../sino-core" }
+tokio.workspace = true

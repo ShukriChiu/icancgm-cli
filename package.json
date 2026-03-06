@@ -1,0 +1,16 @@
+{
+  "name": "icancgm-cli-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build:rust": "cargo build -p sino-cli",
+    "build:ts": "npm run build -w @sinocare/icancgm-cli",
+    "build": "npm run build:rust && npm run build:ts",
+    "type-check": "npm run type-check -w @sinocare/icancgm-cli",
+    "version:set": "node scripts/set-version.mjs",
+    "release:check": "node scripts/check-release-ready.mjs",
+    "release:pack": "npm pack --workspace @sinocare/icancgm-cli"
+  }
+}
